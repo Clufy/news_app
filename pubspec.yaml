@@ -90,5 +90,5 @@ flutter:
   fonts:
      - family: Montserrat
        fonts:
-        - asset: assets/fonts/Montserrat/static/Montserrat-BlackItalic.ttf
-          weight: 500
+        - asset: assets/fonts/Montserrat/Montserrat-BlackItalic.ttf
+          weight: 100
