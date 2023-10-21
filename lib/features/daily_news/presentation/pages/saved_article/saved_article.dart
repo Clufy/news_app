@@ -2,7 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-
+import 'package:ionicons/ionicons.dart';
 import '../../../../../injection_container.dart';
 import '../../../domain/entities/article.dart';
 import '../../bloc/article/local/local_article_bloc.dart';
@@ -30,7 +30,7 @@ class SavedArticles extends HookWidget {
         builder: (context) => GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () => _onBackButtonTapped(context),
-          child: const Icon(Icons.chevron_left, color: Colors.black),
+          child: const Icon(Ionicons.chevron_back, color: Colors.black),
         ),
       ),
       title: const Text('Saved Articles', style: TextStyle(color: Colors.black)),
@@ -54,9 +54,9 @@ class SavedArticles extends HookWidget {
     if (articles.isEmpty) {
       return const Center(
           child: Text(
-            'NO SAVED ARTICLES',
-            style: TextStyle(color: Colors.black),
-          ));
+        'NO SAVED ARTICLES',
+        style: TextStyle(color: Colors.black),
+      ));
     }
 
     return ListView.builder(

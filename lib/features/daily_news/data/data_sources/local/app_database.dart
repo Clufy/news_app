@@ -1,4 +1,3 @@
-
 import 'package:floor/floor.dart';
 import '../../models/article.dart';
 import 'package:sqflite/sqflite.dart' as sqflite;

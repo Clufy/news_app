@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../../../domain/usecases/get_saved_article.dart';
 import '../../../../domain/usecases/remove_article.dart';
 import '../../../../domain/usecases/save_article.dart';
@@ -12,10 +11,10 @@ class LocalArticleBloc extends Bloc<LocalArticlesEvent,LocalArticlesState> {
   final RemoveArticleUseCase _removeArticleUseCase;
 
   LocalArticleBloc(
-      this._getSavedArticleUseCase,
-      this._saveArticleUseCase,
-      this._removeArticleUseCase
-      ) : super(const LocalArticlesLoading()){
+    this._getSavedArticleUseCase,
+    this._saveArticleUseCase,
+    this._removeArticleUseCase
+  ) : super(const LocalArticlesLoading()){
     on <GetSavedArticles> (onGetSavedArticles);
     on <RemoveArticle> (onRemoveArticle);
     on <SaveArticle> (onSaveArticle);
@@ -26,7 +25,7 @@ class LocalArticleBloc extends Bloc<LocalArticlesEvent,LocalArticlesState> {
     final articles = await _getSavedArticleUseCase();
     emit(LocalArticlesDone(articles));
   }
-
+  
   void onRemoveArticle(RemoveArticle removeArticle,Emitter<LocalArticlesState> emit) async {
     await _removeArticleUseCase(params: removeArticle.article);
     final articles = await _getSavedArticleUseCase();

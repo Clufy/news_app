@@ -1,45 +1,43 @@
 import 'package:floor/floor.dart';
-import 'package:news_app/features/daily_news/domain/entities/article.dart';
-
-import '../../../../Core/constants/constants.dart';
-
+import '../../../../core/constants/constants.dart';
+import '../../domain/entities/article.dart';
 
 @Entity(tableName: 'article',primaryKeys: ['id'])
 class ArticleModel extends ArticleEntity {
- const ArticleModel({
-  int ? id,
-  String ? author,
-  String ? title,
-  String ? description,
-  String ? url,
-  String ? urlToImage,
-  String ? publishedAt,
-  String ? content,
- }): super(
-  id: id,
-  author: author,
-  title: title,
-  description: description,
-  url: url,
-  urlToImage: urlToImage,
-  publishedAt: publishedAt,
-  content: content,
- );
-
- factory ArticleModel.fromJson(Map < String, dynamic > map) {
-  return ArticleModel(
-   author: map['author'] ?? "",
-   title: map['title'] ?? "",
-   description: map['description'] ?? "",
-   url: map['url'] ?? "",
-   urlToImage: map['urlToImage'] != null && map['urlToImage'] != "" ? map['urlToImage'] : kDefaultImage,
-   publishedAt: map['publishedAt'] ?? "",
-   content: map['content'] ?? "",
+  const ArticleModel({
+    int ? id,
+    String ? author,
+    String ? title,
+    String ? description,
+    String ? url,
+    String ? urlToImage,
+    String ? publishedAt,
+    String ? content,
+  }): super(
+    id: id,
+    author: author,
+    title: title,
+    description: description,
+    url: url,
+    urlToImage: urlToImage,
+    publishedAt: publishedAt,
+    content: content,
   );
- }
 
- factory ArticleModel.fromEntity(ArticleEntity entity) {
-  return ArticleModel(
+  factory ArticleModel.fromJson(Map < String, dynamic > map) {
+    return ArticleModel(
+      author: map['author'] ?? "",
+      title: map['title'] ?? "",
+      description: map['description'] ?? "",
+      url: map['url'] ?? "",
+      urlToImage: map['urlToImage'] != null && map['urlToImage'] != "" ? map['urlToImage'] : kDefaultImage,
+      publishedAt: map['publishedAt'] ?? "",
+      content: map['content'] ?? "",
+    );
+  }
+
+  factory ArticleModel.fromEntity(ArticleEntity entity) {
+    return ArticleModel(
       id: entity.id,
       author: entity.author,
       title: entity.title,
@@ -48,6 +46,6 @@ class ArticleModel extends ArticleEntity {
       urlToImage: entity.urlToImage,
       publishedAt: entity.publishedAt,
       content: entity.content
-  );
- }
+    );
+  }
 }

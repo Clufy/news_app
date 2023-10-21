@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
-
+import 'package:ionicons/ionicons.dart';
 import '../../../../../injection_container.dart';
 import '../../../domain/entities/article.dart';
 import '../../bloc/article/local/local_article_bloc.dart';
@@ -27,12 +27,11 @@ class ArticleDetailsView extends HookWidget {
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
       leading: Builder(
-        builder: (context) =>
-            GestureDetector(
-              behavior: HitTestBehavior.opaque,
-              onTap: () => _onBackButtonTapped(context),
-              child: const Icon(Icons.chevron_left, color: Colors.black),
-            ),
+        builder: (context) => GestureDetector(
+          behavior: HitTestBehavior.opaque,
+          onTap: () => _onBackButtonTapped(context),
+          child: const Icon(Ionicons.chevron_back, color: Colors.black),
+        ),
       ),
     );
   }
@@ -68,7 +67,7 @@ class ArticleDetailsView extends HookWidget {
           // DateTime
           Row(
             children: [
-              const Icon(Icons.timeline_outlined, size: 16),
+              const Icon(Ionicons.time_outline, size: 16),
               const SizedBox(width: 4),
               Text(
                 article!.publishedAt!,
@@ -102,11 +101,10 @@ class ArticleDetailsView extends HookWidget {
 
   Widget _buildFloatingActionButton() {
     return Builder(
-      builder: (context) =>
-          FloatingActionButton(
-            onPressed: () => _onFloatingActionButtonPressed(context),
-            child: const Icon(Icons.bookmark, color: Colors.white),
-          ),
+      builder: (context) => FloatingActionButton(
+        onPressed: () => _onFloatingActionButtonPressed(context),
+        child: const Icon(Ionicons.bookmark, color: Colors.white),
+      ),
     );
   }
 

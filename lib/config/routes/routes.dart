@@ -5,6 +5,7 @@ import '../../features/daily_news/presentation/pages/article_detail/article_deta
 import '../../features/daily_news/presentation/pages/home/daily_news.dart';
 import '../../features/daily_news/presentation/pages/saved_article/saved_article.dart';
 
+
 class AppRoutes {
   static Route onGenerateRoutes(RouteSettings settings) {
     switch (settings.name) {
@@ -12,11 +13,11 @@ class AppRoutes {
         return _materialRoute(const DailyNews());
 
       case '/ArticleDetails':
-        return _materialRoute(ArticleDetailsView(article: settings.arguments as ArticleEntity) as Widget);
+        return _materialRoute(ArticleDetailsView(article: settings.arguments as ArticleEntity));
 
       case '/SavedArticles':
-        return _materialRoute(const SavedArticles() as Widget);
-
+        return _materialRoute(const SavedArticles());
+        
       default:
         return _materialRoute(const DailyNews());
     }
