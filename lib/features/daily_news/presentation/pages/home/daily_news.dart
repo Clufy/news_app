@@ -5,6 +5,7 @@ import '../../../domain/entities/article.dart';
 import '../../bloc/article/remote/remote_article_bloc.dart';
 import '../../bloc/article/remote/remote_article_state.dart';
 import '../../widgets/article_tile.dart';
+import 'package:news_app/features/daily_news/presentation/pages/NavBar/NavBar.dart';
 
 class DailyNews extends StatelessWidget {
   const DailyNews({ Key? key }) : super(key: key);
@@ -12,6 +13,7 @@ class DailyNews extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      drawer: const NavBar(),
       appBar: _buildAppbar(context),
       body: _buildBody() ,
     );
