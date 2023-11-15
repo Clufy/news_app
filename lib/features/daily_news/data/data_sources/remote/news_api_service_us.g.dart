@@ -6,8 +6,6 @@ part of 'news_api_service_us.dart';
 // RetrofitGenerator
 // **************************************************************************
 
-// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
-
 class _NewsApiService2 implements NewsApiService2 {
   _NewsApiService2(
     this._dio, {
@@ -21,7 +19,7 @@ class _NewsApiService2 implements NewsApiService2 {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<List<ArticleModel>>> getNewsArticles2({
+  Future<HttpResponse<List<ArticleModel2>>> getNewsArticles2({
     String? apiKey,
     String? country,
     String? category,
@@ -36,7 +34,7 @@ class _NewsApiService2 implements NewsApiService2 {
     final _headers = <String, dynamic>{};
     final _data =<String,dynamic> {};
     final _result = await _dio.fetch<Map<String,dynamic>>(
-        _setStreamType<HttpResponse<List<ArticleModel>>>(Options(
+        _setStreamType<HttpResponse<List<ArticleModel2>>>(Options(
       method: 'GET',
       headers: _headers,
       extra: _extra,
@@ -52,8 +50,8 @@ class _NewsApiService2 implements NewsApiService2 {
               _dio.options.baseUrl,
               baseUrl,
             ))));
-    List<ArticleModel> value = _result.data!['articles']
-        .map<ArticleModel>((dynamic i) => ArticleModel.fromJson(i as Map<String, dynamic>))
+    List<ArticleModel2> value = _result.data!['articles']
+        .map<ArticleModel2>((dynamic i) => ArticleModel2.fromJson(i as Map<String, dynamic>))
         .toList();
     final httpResponse = HttpResponse(value, _result);
     return httpResponse;
