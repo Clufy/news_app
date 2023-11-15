@@ -1,13 +1,18 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'news_api_service.dart';
+part of 'news_api_service_us.dart';
 
 // **************************************************************************
 // RetrofitGenerator
 // **************************************************************************
 
-class _NewsApiService implements NewsApiService {
-  _NewsApiService(this._dio, {this.baseUrl}) {
+// ignore_for_file: unnecessary_brace_in_string_interps,no_leading_underscores_for_local_identifiers
+
+class _NewsApiService2 implements NewsApiService2 {
+  _NewsApiService2(
+    this._dio, {
+    this.baseUrl,
+  }) {
     baseUrl ??= 'https://newsapi.org/v2';
   }
 
@@ -16,23 +21,37 @@ class _NewsApiService implements NewsApiService {
   String? baseUrl;
 
   @override
-  Future<HttpResponse<List<ArticleModel>>> getNewsArticles(
-      {apiKey, country, category}) async {
+  Future<HttpResponse<List<ArticleModel>>> getNewsArticles2({
+    String? apiKey,
+    String? country,
+    String? category,
+  }) async {
     const _extra = <String, dynamic>{};
     final queryParameters = <String, dynamic>{
       r'apiKey': apiKey,
-      r'country': country,
-      r'category': category
+      r'country2': country,
+      r'category2': category,
     };
     queryParameters.removeWhere((k, v) => v == null);
     final _headers = <String, dynamic>{};
-    final _data = <String, dynamic>{};
+    final _data =<String,dynamic> {};
     final _result = await _dio.fetch<Map<String,dynamic>>(
-        _setStreamType<HttpResponse<List<ArticleModel>>>(
-            Options(method: 'GET', headers: _headers, extra: _extra)
-                .compose(_dio.options, '/top-headlines',
-                    queryParameters: queryParameters, data: _data)
-                .copyWith(baseUrl: baseUrl ?? _dio.options.baseUrl)));
+        _setStreamType<HttpResponse<List<ArticleModel>>>(Options(
+      method: 'GET',
+      headers: _headers,
+      extra: _extra,
+    )
+            .compose(
+              _dio.options,
+              '/top-headlines',
+              queryParameters: queryParameters,
+              data: _data,
+            )
+            .copyWith(
+                baseUrl: _combineBaseUrls(
+              _dio.options.baseUrl,
+              baseUrl,
+            ))));
     List<ArticleModel> value = _result.data!['articles']
         .map<ArticleModel>((dynamic i) => ArticleModel.fromJson(i as Map<String, dynamic>))
         .toList();
@@ -51,5 +70,22 @@ class _NewsApiService implements NewsApiService {
       }
     }
     return requestOptions;
+  }
+
+  String _combineBaseUrls(
+    String dioBaseUrl,
+    String? baseUrl,
+  ) {
+    if (baseUrl == null || baseUrl.trim().isEmpty) {
+      return dioBaseUrl;
+    }
+
+    final url = Uri.parse(baseUrl);
+
+    if (url.isAbsolute) {
+      return url.toString();
+    }
+
+    return Uri.parse(dioBaseUrl).resolveUri(url).toString();
   }
 }

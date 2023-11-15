@@ -40,9 +40,9 @@ class ArticleWidget extends StatelessWidget {
     return CachedNetworkImage(
       imageUrl: article!.urlToImage!,
       imageBuilder : (context, imageProvider) => Padding(
-        padding: const EdgeInsetsDirectional.only(end: 14),
+        padding: const EdgeInsetsDirectional.only(end: 10),
           child: ClipRRect(
-            borderRadius: BorderRadius.circular(20.0),
+            borderRadius: BorderRadius.circular(15.0),
             child: Container(
               width: MediaQuery.of(context).size.width / 3,
               height: double.maxFinite,

@@ -1,15 +1,19 @@
 import 'package:get_it/get_it.dart';
 import 'package:dio/dio.dart';
+import 'package:news_app/features/daily_news/data/data_sources/remote/news_api_service_us.dart';
+import 'package:news_app/features/daily_news/data/repository/article_repository_impl_us.dart';
 import 'features/daily_news/data/data_sources/local/app_database.dart';
-import 'features/daily_news/data/data_sources/remote/news_api_service.dart';
-import 'features/daily_news/data/repository/article_repository_impl.dart';
+import 'features/daily_news/data/data_sources/remote/news_api_service_in.dart';
+import 'features/daily_news/data/repository/article_repository_impl_in.dart';
 import 'features/daily_news/domain/repository/article_repository.dart';
 import 'features/daily_news/domain/usecases/get_article.dart';
+import 'features/daily_news/domain/usecases/get_article2.dart';
 import 'features/daily_news/domain/usecases/get_saved_article.dart';
 import 'features/daily_news/domain/usecases/remove_article.dart';
 import 'features/daily_news/domain/usecases/save_article.dart';
 import 'features/daily_news/presentation/bloc/article/local/local_article_bloc.dart';
 import 'features/daily_news/presentation/bloc/article/remote/remote_article_bloc.dart';
+import 'features/daily_news/presentation/bloc/article/remote/remote_article_bloc2.dart';
 
 final sl = GetIt.instance;
 
@@ -23,14 +27,21 @@ Future<void> initializeDependencies() async {
 
   // Dependencies
   sl.registerSingleton<NewsApiService>(NewsApiService(sl()));
+  sl.registerSingleton<NewsApiService2>(NewsApiService2(sl()));
 
   sl.registerSingleton<ArticleRepository>(
     ArticleRepositoryImpl(sl(),sl())
+  );
+  sl.registerSingleton<ArticleRepository2>(
+      ArticleRepositoryImpl2(sl(), sl())
   );
   
   //UseCases
   sl.registerSingleton<GetArticleUseCase>(
     GetArticleUseCase(sl())
+  );
+  sl.registerSingleton<GetArticleUseCase2>(
+      GetArticleUseCase2(sl())
   );
 
   sl.registerSingleton<GetSavedArticleUseCase>(
@@ -49,6 +60,9 @@ Future<void> initializeDependencies() async {
   //Blocs
   sl.registerFactory<RemoteArticlesBloc>(
     ()=> RemoteArticlesBloc(sl())
+  );
+  sl.registerFactory<RemoteArticlesBloc2>(
+          ()=> RemoteArticlesBloc2(sl())
   );
 
   sl.registerFactory<LocalArticleBloc>(

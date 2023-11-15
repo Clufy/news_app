@@ -1,46 +1,45 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../domain/entities/article.dart';
-import '../../bloc/article/remote/remote_article_bloc.dart';
-import '../../bloc/article/remote/remote_article_state.dart';
-import '../../widgets/article_tile.dart';
-import '../NavBar/NavBar.dart';
 
-class DailyNews extends StatelessWidget {
-  const DailyNews({ Key? key }) : super(key: key);
+import '../../../domain/entities/article.dart';
+import '../../bloc/article/remote/remote_article_bloc2.dart';
+import '../../bloc/article/remote/remote_articles_state2.dart';
+import '../../widgets/article_tile2.dart';
+
+class Usa extends StatelessWidget{
+  const Usa({Key? key}) : super(key: key);
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context){
     return Scaffold(
-      drawer: const NavBar(),
       appBar: _buildAppbar(context),
       body: _buildBody() ,
     );
   }
-  
+
   _buildAppbar(BuildContext context) {
     return AppBar(
       title: const Text(
-          'Daily News',
-          style: TextStyle(
+        'NEWS',
+        style: TextStyle(
             color: Colors.black
+        ),
+      ),
+      actions: [
+        GestureDetector(
+          onTap: () => _onShowSavedArticlesViewTapped(context),
+          child: const Padding(
+            padding: EdgeInsets.symmetric(horizontal: 14),
+            child: Icon(Icons.bookmark, color: Colors.black),
           ),
         ),
-        actions: [
-          GestureDetector(
-            onTap: () => _onShowSavedArticlesViewTapped(context),
-            child: const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 14),
-              child: Icon(Icons.bookmark, color: Colors.black),
-            ),
-          ),
-        ],
+      ],
     );
   }
 
   _buildBody() {
-    return BlocBuilder<RemoteArticlesBloc,RemoteArticlesState> (
+    return BlocBuilder<RemoteArticlesBloc2,RemoteArticlesState2> (
       builder: (_,state) {
         if (state is RemoteArticlesLoading) {
           return const Center(child: CupertinoActivityIndicator());
@@ -50,14 +49,14 @@ class DailyNews extends StatelessWidget {
         }
         if (state is RemoteArticlesDone) {
           return ListView.builder(
-           itemBuilder: (context,index){
-            return ArticleWidget(
-              article: state.articles![index] ,
-              onArticlePressed: (article) => _onArticlePressed(context,article),
-            );
-           },
-           itemCount: state.articles!.length,
-         );
+            itemBuilder: (context,index){
+              return ArticleWidget2(
+                article: state.articles![index] ,
+                onArticlePressed: (article) => _onArticlePressed(context,article),
+              );
+            },
+            itemCount: state.articles!.length,
+          );
         }
         return const SizedBox();
       },
@@ -71,5 +70,5 @@ class DailyNews extends StatelessWidget {
   void _onShowSavedArticlesViewTapped(BuildContext context) {
     Navigator.pushNamed(context, '/SavedArticles');
   }
-  
+
 }

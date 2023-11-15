@@ -5,7 +5,7 @@ import '../../../../core/resources/data_state.dart';
 import '../../domain/entities/article.dart';
 import '../../domain/repository/article_repository.dart';
 import '../data_sources/local/app_database.dart';
-import '../data_sources/remote/news_api_service.dart';
+import '../data_sources/remote/news_api_service_in.dart';
 import '../models/article.dart';
 
 class ArticleRepositoryImpl implements ArticleRepository {

@@ -3,7 +3,7 @@ import '../../../../../core/constants/constants.dart';
 import 'package:dio/dio.dart';
 
 import '../../models/article.dart';
-part 'news_api_service.g.dart';
+part 'news_api_service_in.g.dart';
 
 @RestApi(baseUrl:newsAPIBaseURL)
 abstract class NewsApiService {
