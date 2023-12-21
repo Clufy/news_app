@@ -5,15 +5,14 @@ import '../../../domain/entities/article.dart';
 import '../../bloc/article/remote/remote_article_bloc.dart';
 import '../../bloc/article/remote/remote_article_state.dart';
 import '../../widgets/article_tile.dart';
-import '../NavBar/NavBar.dart';
 
 class DailyNews extends StatelessWidget {
-  const DailyNews({ Key? key }) : super(key: key);
+  const DailyNews({ super.key });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: const NavBar(),
+      /*drawer: const Navbar(),*/
       appBar: _buildAppbar(context),
       body: _buildBody() ,
     );
@@ -24,7 +23,7 @@ class DailyNews extends StatelessWidget {
       title: const Text(
           'Daily News',
           style: TextStyle(
-            color: Colors.black
+            color: Colors.blueGrey
           ),
         ),
         actions: [
@@ -32,7 +31,7 @@ class DailyNews extends StatelessWidget {
             onTap: () => _onShowSavedArticlesViewTapped(context),
             child: const Padding(
               padding: EdgeInsets.symmetric(horizontal: 14),
-              child: Icon(Icons.bookmark, color: Colors.black),
+              child: Icon(Icons.bookmark, color: Colors.green),
             ),
           ),
         ],

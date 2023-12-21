@@ -8,7 +8,7 @@ import '../../bloc/article/remote/remote_articles_state2.dart';
 import '../../widgets/article_tile2.dart';
 
 class Usa extends StatelessWidget{
-  const Usa({Key? key}) : super(key: key);
+  const Usa({super.key});
 
   @override
   Widget build(BuildContext context){

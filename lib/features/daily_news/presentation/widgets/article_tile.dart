@@ -10,12 +10,12 @@ class ArticleWidget extends StatelessWidget {
   final void Function(ArticleEntity article) ? onArticlePressed;
 
   const ArticleWidget({
-    Key ? key,
+    super.key,
     this.article,
     this.onArticlePressed,
     this.isRemovable = false,
     this.onRemove,
-  }): super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -61,10 +61,10 @@ class ArticleWidget extends StatelessWidget {
           child: ClipRRect(
             borderRadius: BorderRadius.circular(20.0),
             child: Container(
-              width: MediaQuery.of(context).size.width / 3,
+              width: MediaQuery.of(context).size.width / 4,
               height: double.maxFinite,
               decoration: BoxDecoration(
-                color: Colors.black.withOpacity(0.08),
+                color: Colors.black.withOpacity(0.5),
               ),
               child: const CupertinoActivityIndicator(),
             ),
@@ -105,7 +105,7 @@ class ArticleWidget extends StatelessWidget {
                   fontFamily: 'Butler',
                   fontWeight: FontWeight.w900,
                   fontSize: 18,
-                  color: Colors.black87,
+                  color: Colors.lightGreen,
                 ),
               ),
 
